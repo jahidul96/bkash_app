@@ -1,22 +1,20 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
 import {AppColor} from '../utils/AppColor';
-import LinkText from './LinkText';
 import {payoption} from '../utils/Interfaces';
 import PayOptions from './PayOptions';
 
 interface Props {
-  text: string;
   data: Array<payoption>;
 }
 
-const SuggestedComp: FC<Props> = ({text, data}) => {
+const SuggestedComp: FC<Props> = ({data}) => {
   return (
     <View style={styles.container}>
-      <View style={styles.linkTextWrapper}>
-        <LinkText text={text} />
-      </View>
-      <ScrollView horizontal contentContainerStyle={styles.scrollContainer}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContainer}>
         {data.map(option => (
           <PayOptions key={option.id} payoption={option} />
         ))}
@@ -30,10 +28,6 @@ export default SuggestedComp;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: AppColor.White,
-    elevation: 1,
-    marginBottom: 15,
-    borderRadius: 5,
   },
   linkTextWrapper: {
     paddingVertical: 8,
@@ -44,7 +38,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     height: 100,
     flexGrow: 1,
-    // alignItems: 'center',
     justifyContent: 'center',
     marginBottom: -15,
   },
