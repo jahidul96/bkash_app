@@ -5,6 +5,8 @@ import HomeTopBar from '../components/HomeTopBar';
 import PayOptions from '../components/PayOptions';
 import {payOptions} from '../data/payOptionData';
 import {WIDTH} from '../utils/AppDimension';
+import SuggestedComp from '../components/SuggestedComp';
+import {myOfferData} from '../data/myoffer';
 
 const HomeScreen = () => {
   return (
@@ -18,11 +20,15 @@ const HomeScreen = () => {
       {/* scrol content */}
       <ScrollView>
         {/* payments options */}
-
         <View style={styles.payContainer}>
           {payOptions.map(payoption => (
             <PayOptions key={payoption.id} payoption={payoption} />
           ))}
+        </View>
+
+        {/* saved data */}
+        <View style={styles.savedContentWrapper}>
+          <SuggestedComp text="আমার বিকাশ" data={myOfferData} />
         </View>
       </ScrollView>
     </View>
@@ -46,6 +52,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 15,
+    paddingBottom: 25,
     backgroundColor: AppColor.White,
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 15,
+    elevation: 1,
+    marginBottom: 15,
+  },
+  savedContentWrapper: {
+    width: WIDTH,
+    paddingHorizontal: 10,
   },
 });

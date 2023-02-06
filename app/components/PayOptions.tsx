@@ -1,15 +1,10 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {FC} from 'react';
 import {WIDTH} from '../utils/AppDimension';
+import {payoption} from '../utils/Interfaces';
 
 interface Props {
   payoption: payoption;
-}
-
-interface payoption {
-  id: number;
-  icon: any;
-  name: string;
 }
 
 const PayOptions: FC<Props> = ({payoption}) => {
@@ -28,14 +23,14 @@ const styles = StyleSheet.create({
     width: WIDTH / 4.3,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 20,
   },
   iconStyle: {
     width: 32,
     height: 32,
   },
   name: {
-    fontSize: 12,
-    marginTop: 4,
+    fontSize: 11,
+    marginTop: 7,
   },
 });
