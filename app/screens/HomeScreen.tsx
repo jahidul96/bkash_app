@@ -5,8 +5,9 @@ import {
   StatusBar,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {AppColor} from '../utils/AppColor';
 import HomeTopBar from '../components/HomeTopBar';
 import PayOptions from '../components/PayOptions';
@@ -21,8 +22,10 @@ import {offerData} from '../data/offerData';
 import OfferComp from '../components/OfferComp';
 import {book} from '../utils/fileExport';
 import ButtonComp from '../components/ButtonComp';
+import {shebaData} from '../data/shebaData';
 
 const HomeScreen = () => {
+  const [showAllOPtion, setShowAllOption] = useState(false);
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={AppColor.primary} />
@@ -31,13 +34,42 @@ const HomeScreen = () => {
         <HomeTopBar />
       </View>
 
-      {/* scrol content */}
+      {/* scroll content */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* payments options */}
-        <View style={styles.payContainer}>
+        {/*  options contents */}
+        <View
+          style={[
+            styles.payContainer,
+            showAllOPtion == false && styles.payContainerExtraStyle,
+          ]}>
           {payOptions.map(payoption => (
-            <PayOptions key={payoption.id} payoption={payoption} />
+            <PayOptions key={payoption.id} payoption={payoption} pay={true} />
           ))}
+
+          {/* toggler  */}
+          {showAllOPtion == true ? (
+            <View style={styles.opentogglerContainerWrapper}>
+              <TouchableOpacity
+                style={styles.opentogglerContainer}
+                onPress={() => setShowAllOption(!showAllOPtion)}>
+                <Text style={styles.toglerText}>বন্ধ করুন</Text>
+                <Image
+                  source={require('../assets/icons/up.png')}
+                  style={styles.downIconStyle}
+                />
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <TouchableOpacity
+              style={styles.togglerContainer}
+              onPress={() => setShowAllOption(!showAllOPtion)}>
+              <Text style={styles.toglerText}>আরো দেখুন</Text>
+              <Image
+                source={require('../assets/icons/down.png')}
+                style={styles.downIconStyle}
+              />
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* saved data */}
@@ -50,7 +82,7 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        {/* carosel data */}
+        {/*slider content */}
         <View style={styles.sliderWrapper}>
           <Slider data={sliderData} />
         </View>
@@ -90,7 +122,7 @@ const HomeScreen = () => {
 
             <View
               style={[styles.payContainer, {elevation: 0, marginBottom: 0}]}>
-              {payOptions.slice(0, 8).map(payoption => (
+              {shebaData.map(payoption => (
                 <PayOptions key={payoption.id} payoption={payoption} />
               ))}
             </View>
@@ -136,12 +168,65 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 15,
-    paddingBottom: 25,
+    paddingBottom: 15,
     backgroundColor: AppColor.White,
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
     elevation: 1,
     marginBottom: 15,
+  },
+
+  payContainerExtraStyle: {
+    height: 190,
+    overflow: 'hidden',
+  },
+
+  togglerContainer: {
+    width: 100,
+    height: 37,
+    position: 'absolute',
+    backgroundColor: AppColor.White,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    left: '35%',
+    bottom: 6,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 18,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 20.0,
+    elevation: 24,
+    zIndex: 999,
+  },
+
+  downIconStyle: {
+    width: 10,
+    height: 10,
+    marginLeft: 4,
+  },
+
+  toglerText: {
+    fontSize: 12,
+  },
+  opentogglerContainerWrapper: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  opentogglerContainer: {
+    width: 100,
+    height: 37,
+    backgroundColor: AppColor.White,
+    borderRadius: 30,
+    elevation: 5,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   savedContentWrapper: {
     width: WIDTH,

@@ -10,12 +10,11 @@ const Slider: React.FC<Props> = ({data}) => {
   return (
     <View style={{flex: 1}}>
       <Carousel
-        snapEnabled
+        autoPlayInterval={5000}
         loop
         width={width - 20}
         height={width / 2.5}
-        // autoPlay={true}
-
+        autoPlay={true}
         data={data}
         scrollAnimationDuration={500}
         // onSnapToItem={index => console.log('current index:', index)}
