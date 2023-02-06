@@ -53,8 +53,8 @@ export default HomeTopBar;
 
 const styles = StyleSheet.create({
   container: {
-    width: WIDTH,
-    height: 85,
+    width: '100%',
+    height: '100%',
     backgroundColor: AppColor.primary,
     paddingHorizontal: 10,
     flexDirection: 'row',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   balanceWrapper: {
     width: '90%',
-    height: 32,
+    height: 30,
     backgroundColor: AppColor.White,
     borderRadius: 30,
     paddingHorizontal: 7,
