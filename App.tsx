@@ -7,6 +7,7 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Rewards from './app/screens/Rewards';
+import BottomNav from './app/screens/navigation/BottomNav';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +19,8 @@ const App = () => {
           headerShown: false,
         }}>
         <Stack.Screen
-          name="HomeScreen"
-          component={gestureHandlerRootHOC(HomeScreen)}
+          name="Main"
+          component={gestureHandlerRootHOC(BottomNav)}
         />
         <Stack.Screen
           name="Rewards"

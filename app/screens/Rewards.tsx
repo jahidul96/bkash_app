@@ -51,6 +51,7 @@ const Rewards = () => {
 
       {/* scroll content */}
       <ScrollView
+        showsVerticalScrollIndicator={false}
         style={{
           paddingHorizontal: 10,
         }}>
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     width: WIDTH,
-    height: HEIGHT / 3.8,
+    height: HEIGHT / 4,
     paddingHorizontal: 10,
     marginVertical: 10,
   },
