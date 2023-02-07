@@ -12,7 +12,7 @@ import {AppColor} from '../utils/AppColor';
 import HomeTopBar from '../components/HomeTopBar';
 import PayOptions from '../components/PayOptions';
 import {payOptions} from '../data/payOptionData';
-import {WIDTH} from '../utils/AppDimension';
+import {HEIGHT, WIDTH} from '../utils/AppDimension';
 import SuggestedComp from '../components/SuggestedComp';
 import {myOfferData} from '../data/myoffer';
 import Slider from '../components/Slider';
@@ -72,7 +72,7 @@ const HomeScreen = () => {
           )}
         </View>
 
-        {/* saved data */}
+        {/* my saved  data */}
         <View style={styles.savedContentWrapper}>
           <View style={styles.saveContainer}>
             <View style={styles.linkTextWrapper}>
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   topbarWrapper: {
     width: WIDTH,
     backgroundColor: AppColor.White,
-    height: 85,
+    height: HEIGHT / 8.9,
   },
   payContainer: {
     flexDirection: 'row',
@@ -182,35 +182,29 @@ const styles = StyleSheet.create({
   },
 
   togglerContainer: {
-    width: 100,
-    height: 37,
+    width: 78,
+    height: 28,
     position: 'absolute',
     backgroundColor: AppColor.White,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
-    left: '35%',
+    borderRadius: 30,
+    left: '40%',
     bottom: 6,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 18,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 20.0,
-    elevation: 24,
+    elevation: 5,
     zIndex: 999,
   },
 
   downIconStyle: {
-    width: 10,
-    height: 10,
+    width: 8,
+    height: 6,
     marginLeft: 4,
   },
 
   toglerText: {
-    fontSize: 12,
+    fontSize: 10,
+    color: AppColor.primary,
   },
   opentogglerContainerWrapper: {
     width: '100%',
@@ -219,8 +213,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   opentogglerContainer: {
-    width: 100,
-    height: 37,
+    width: 78,
+    height: 28,
     backgroundColor: AppColor.White,
     borderRadius: 30,
     elevation: 5,

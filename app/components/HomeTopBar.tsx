@@ -7,12 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {award, f2, frame, logo, person, taka} from '../utils/fileExport';
 import {WIDTH} from '../utils/AppDimension';
 import {AppColor} from '../utils/AppColor';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeTopBar = () => {
+  const [showBalance, setShowBalance] = useState(false);
+  const navigation = useNavigation<any>();
+
   return (
     <View style={styles.container}>
       {/* profile section */}
@@ -27,17 +31,33 @@ const HomeTopBar = () => {
         {/* name and balance comp */}
         <View style={styles.nameContainer}>
           <Text style={styles.name}>Jahidul islam</Text>
-          <TouchableOpacity style={styles.balanceWrapper}>
-            <View style={styles.takaWrapper}>
-              <Image source={taka} style={styles.takaImgStyle} />
-            </View>
-            <Text style={styles.seebalance}>ব্যালেন্স দেখুন</Text>
+          <TouchableOpacity
+            style={[
+              styles.balanceWrapper,
+              showBalance && {justifyContent: 'space-between'},
+            ]}
+            activeOpacity={1}
+            onPress={() => setShowBalance(!showBalance)}>
+            {showBalance ? (
+              <Text>2,000</Text>
+            ) : (
+              <View style={styles.takaWrapper}>
+                <Image source={taka} style={styles.takaImgStyle} />
+              </View>
+            )}
+            {showBalance ? (
+              <View style={styles.takaWrapper}>
+                <Image source={taka} style={styles.takaImgStyle} />
+              </View>
+            ) : (
+              <Text style={styles.seebalance}>ব্যালেন্স দেখুন</Text>
+            )}
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={styles.rightContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Rewards')}>
           <Image source={award} style={styles.awardImgStyle} />
         </TouchableOpacity>
         <TouchableOpacity>

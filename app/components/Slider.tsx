@@ -13,7 +13,7 @@ const Slider: React.FC<Props> = ({data}) => {
         autoPlayInterval={5000}
         loop
         width={width - 20}
-        height={width / 2.5}
+        height={width / 2.9}
         autoPlay={true}
         data={data}
         scrollAnimationDuration={500}

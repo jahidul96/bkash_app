@@ -16,12 +16,12 @@ export const payOptions = [
   },
   {
     id: 4,
-    icon: require('../assets/icons/payment.png'),
+    icon: require('../assets/icons/money.png'),
     name: 'পেমেন্ট',
   },
   {
     id: 5,
-    icon: require('../assets/icons/recharge.png'),
+    icon: require('../assets/icons/prepaid.png'),
     name: 'অ্যাড মানি',
   },
   {
