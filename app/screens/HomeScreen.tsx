@@ -191,8 +191,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 30,
     left: '40%',
-    bottom: 6,
-    elevation: 5,
+    bottom: 10,
+    elevation: 3,
     zIndex: 999,
   },
 
@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 6,
     marginLeft: 4,
+    tintColor: AppColor.primary,
   },
 
   toglerText: {

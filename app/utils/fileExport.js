@@ -5,5 +5,6 @@ import taka from '../assets/icons/taka.png';
 import award from '../assets/icons/award.png';
 import logo from '../assets/icons/logo.png';
 import book from '../assets/icons/openbook.png';
+import qrcode from '../assets/shebaicon/qr-code.png';
 
-export {person, frame, f2, taka, award, logo, book};
+export {person, frame, f2, taka, award, logo, book, qrcode};
