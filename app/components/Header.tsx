@@ -9,18 +9,24 @@ import {useNavigation} from '@react-navigation/native';
 
 interface Props {
   text: string;
+  back?: boolean;
 }
-const Header: FC<Props> = ({text}) => {
+const Header: FC<Props> = ({text, back}) => {
   const navigation = useNavigation<any>();
 
   return (
     <View style={styles.container}>
-      <Ionicons
-        name="arrow-back"
-        size={25}
-        color={AppColor.White}
-        onPress={() => navigation.goBack()}
-      />
+      {back ? (
+        <Ionicons
+          name="arrow-back"
+          size={25}
+          color={AppColor.White}
+          onPress={() => navigation.goBack()}
+        />
+      ) : (
+        <View></View>
+      )}
+
       <Text style={styles.text}>{text}</Text>
       <Image source={logo} style={styles.logoStyle} />
     </View>

@@ -18,7 +18,7 @@ const Rewards = () => {
   return (
     <View style={styles.container}>
       {/* header  */}
-      <Header text="বিকাশ রিওয়ার্ডস" />
+      <Header text="বিকাশ রিওয়ার্ডস" back />
 
       {/* point count content */}
       <View style={styles.boxContainer}>
