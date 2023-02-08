@@ -6,7 +6,7 @@ import {
   ScrollView,
   Image,
   Pressable,
-  TouchableNativeFeedback,
+  Modal,
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColor} from '../utils/AppColor';
@@ -25,11 +25,17 @@ import {book} from '../utils/fileExport';
 import ButtonComp from '../components/ButtonComp';
 import {shebaData} from '../data/shebaData';
 
+import MyoffersModelContent from '../components/modelContentComp/MyoffersModelContent';
+import {useNavigation} from '@react-navigation/native';
+
 const HomeScreen = () => {
-  const [showAllOPtion, setShowAllOption] = useState(false);
+  const [showAllOption, setShowAllOption] = useState(false);
+  const [showMyOffers, setShowMyOffers] = useState(false);
+  const [showSuggesion, SetShowSuggesion] = useState(false);
+  const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={AppColor.primary} />
+      <StatusBar backgroundColor={AppColor.primary} barStyle="light-content" />
       {/* home topbar */}
       <View style={styles.topbarWrapper}>
         <HomeTopBar />
@@ -41,18 +47,18 @@ const HomeScreen = () => {
         <View
           style={[
             styles.payContainer,
-            showAllOPtion == false && styles.payContainerExtraStyle,
+            showAllOption == false && styles.payContainerExtraStyle,
           ]}>
           {payOptions.map(payoption => (
             <PayOptions key={payoption.id} payoption={payoption} pay={true} />
           ))}
 
           {/* toggler  */}
-          {showAllOPtion == true ? (
+          {showAllOption == true ? (
             <View style={styles.opentogglerContainerWrapper}>
               <Pressable
                 style={styles.opentogglerContainer}
-                onPress={() => setShowAllOption(!showAllOPtion)}>
+                onPress={() => setShowAllOption(!showAllOption)}>
                 <Text style={styles.toglerText}>বন্ধ করুন</Text>
                 <Image
                   source={require('../assets/icons/up.png')}
@@ -63,7 +69,7 @@ const HomeScreen = () => {
           ) : (
             <Pressable
               style={styles.togglerContainer}
-              onPress={() => setShowAllOption(!showAllOPtion)}>
+              onPress={() => setShowAllOption(!showAllOption)}>
               <Text style={styles.toglerText}>আরো দেখুন</Text>
               <Image
                 source={require('../assets/icons/down.png')}
@@ -77,7 +83,10 @@ const HomeScreen = () => {
         <View style={styles.savedContentWrapper}>
           <View style={styles.saveContainer}>
             <View style={styles.linkTextWrapper}>
-              <LinkText text="আমার বিকাশ" />
+              <LinkText
+                text="আমার বিকাশ"
+                onPress={() => setShowMyOffers(!showMyOffers)}
+              />
             </View>
             <SuggestedComp data={myOfferData} />
           </View>
@@ -92,7 +101,10 @@ const HomeScreen = () => {
         <View style={[styles.savedContentWrapper]}>
           <View style={styles.saveContainer}>
             <View style={styles.linkTextWrapper}>
-              <LinkText text="সাজেশন" />
+              <LinkText
+                text="সাজেশন"
+                onPress={() => SetShowSuggesion(!showSuggesion)}
+              />
             </View>
             <SuggestedComp data={myOfferData} />
           </View>
@@ -102,7 +114,10 @@ const HomeScreen = () => {
         <View style={[styles.savedContentWrapper, {marginVertical: 10}]}>
           <View style={styles.saveContainer}>
             <View style={styles.linkTextWrapper}>
-              <LinkText text="অফার" />
+              <LinkText
+                text="অফার"
+                onPress={() => navigation.navigate('AllOffer')}
+              />
             </View>
             <View
               style={{
@@ -144,10 +159,37 @@ const HomeScreen = () => {
             <ButtonComp
               text={'এখনই পে করুন'}
               extraStyle={styles.extraBtnStyle}
+              onPress={() => navigation.navigate('PaymentMethodScreen')}
             />
           </View>
         </View>
       </ScrollView>
+
+      {/* models content */}
+
+      {/* my offers */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showMyOffers}
+        onRequestClose={() => setShowMyOffers(!showMyOffers)}>
+        <MyoffersModelContent
+          text="আমার বিকাশ"
+          onPress={() => setShowMyOffers(!showMyOffers)}
+        />
+      </Modal>
+
+      {/* suggestions */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showSuggesion}
+        onRequestClose={() => SetShowSuggesion(!showSuggesion)}>
+        <MyoffersModelContent
+          text="সাজেশন"
+          onPress={() => SetShowSuggesion(!showSuggesion)}
+        />
+      </Modal>
     </View>
   );
 };
@@ -270,8 +312,7 @@ const styles = StyleSheet.create({
   extraBtnStyle: {
     width: '45%',
     borderRadius: 30,
-    borderWidth: 1,
-    borderColor: AppColor.primary,
+
     height: 40,
     marginTop: 10,
   },

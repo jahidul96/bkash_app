@@ -8,5 +8,18 @@ import book from '../assets/icons/openbook.png';
 import qrcode from '../assets/shebaicon/qr-code.png';
 import contacts from '../assets/icons/contacts.png';
 import tapImg from '../assets/tap.png';
+import myQr from '../assets/q.png';
 
-export {person, frame, f2, taka, award, logo, book, qrcode, contacts, tapImg};
+export {
+  person,
+  frame,
+  f2,
+  taka,
+  award,
+  logo,
+  book,
+  qrcode,
+  contacts,
+  tapImg,
+  myQr,
+};

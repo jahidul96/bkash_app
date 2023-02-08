@@ -6,7 +6,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {AppColor} from '../../utils/AppColor';
 import InputComp from '../InputComp';
 import Ionincons from 'react-native-vector-icons/Ionicons';
@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const AgentComp = () => {
   const navigation = useNavigation<any>();
+  const [number, setNumber] = useState('');
   return (
     <View style={styles.container}>
       {/* input comp */}
@@ -23,9 +24,18 @@ const AgentComp = () => {
         <InputComp
           placeholder="agent number"
           extraInputStyle={styles.extraInputStyle}
+          keyboardType="phone-pad"
+          value={number}
+          setValue={setNumber}
         />
         <Pressable onPress={() => navigation.navigate('InputAmountPage')}>
-          <Ionincons name="arrow-forward" size={24} />
+          <Ionincons
+            name="arrow-forward"
+            size={28}
+            color={
+              number.length == 11 ? AppColor.primary : AppColor.inActiveColor
+            }
+          />
         </Pressable>
       </View>
 
@@ -83,6 +93,7 @@ const styles = StyleSheet.create({
   },
   extraInputStyle: {
     width: '70%',
+    fontSize: 16,
   },
   qrWrapper: {
     backgroundColor: AppColor.White,

@@ -9,17 +9,12 @@ import {
 import React, {FC} from 'react';
 import {WIDTH} from '../utils/AppDimension';
 import {AppColor} from '../utils/AppColor';
+import {itemInterface} from '../utils/Interfaces';
 
 interface Props {
   data: Array<itemInterface>;
 }
 
-interface itemInterface {
-  img: any;
-  id: number;
-  offer: string;
-  name: string;
-}
 const OfferComp: FC<Props> = ({data}) => {
   return (
     <View
@@ -27,31 +22,37 @@ const OfferComp: FC<Props> = ({data}) => {
         width: '100%',
       }}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {data.map(item => {
-          return (
-            <TouchableOpacity style={styles.itemWrapper} key={item.id}>
-              <Image source={{uri: item.img}} style={styles.imgStyle} />
-              <View style={{paddingHorizontal: 10, marginTop: 7}}>
-                <Text
-                  style={{
-                    marginBottom: 3,
-                  }}>
-                  {item.offer}
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 12,
-                  }}>
-                  {item.name}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
+        {data.map(item => (
+          <OfferItem item={item} key={item.id} />
+        ))}
       </ScrollView>
     </View>
   );
 };
+
+interface ItemProps {
+  item: itemInterface;
+  extraStyle?: any;
+}
+export const OfferItem: FC<ItemProps> = ({item, extraStyle}) => (
+  <TouchableOpacity style={[styles.itemWrapper, extraStyle]}>
+    <Image source={{uri: item.img}} style={styles.imgStyle} />
+    <View style={{paddingHorizontal: 10, marginTop: 7}}>
+      <Text
+        style={{
+          marginBottom: 3,
+        }}>
+        {item.offer}
+      </Text>
+      <Text
+        style={{
+          fontSize: 12,
+        }}>
+        {item.name}
+      </Text>
+    </View>
+  </TouchableOpacity>
+);
 
 export default OfferComp;
 

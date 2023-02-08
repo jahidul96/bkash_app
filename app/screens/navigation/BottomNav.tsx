@@ -31,7 +31,7 @@ const BottomNav = () => {
               <Ionicons
                 name="home"
                 size={25}
-                color={focused ? AppColor.primary : AppColor.Gray}
+                color={focused ? AppColor.primary : AppColor.inActiveColor}
               />
             );
 
@@ -41,7 +41,15 @@ const BottomNav = () => {
                 <TouchableNativeFeedback
                   style={styles.qrWrapper}
                   onPress={() => navigation.navigate('Qr স্ক্যান')}>
-                  <Image source={qrcode} style={styles.qrIconStyle} />
+                  <Image
+                    source={qrcode}
+                    style={[
+                      styles.qrIconStyle,
+                      focused
+                        ? {tintColor: AppColor.primary}
+                        : {tintColor: AppColor.inActiveColor},
+                    ]}
+                  />
                 </TouchableNativeFeedback>
               </Animated.View>
             );
@@ -51,7 +59,7 @@ const BottomNav = () => {
               <MaterialCommunityIcons
                 name="email"
                 size={25}
-                color={focused ? AppColor.primary : AppColor.Gray}
+                color={focused ? AppColor.primary : AppColor.inActiveColor}
               />
             );
         },
@@ -108,6 +116,5 @@ const styles = StyleSheet.create({
   qrIconStyle: {
     width: 30,
     height: 30,
-    tintColor: AppColor.primary,
   },
 });

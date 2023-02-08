@@ -1,16 +1,18 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, Pressable} from 'react-native';
 import React, {FC} from 'react';
+import {AppColor} from '../utils/AppColor';
 
 interface Props {
   text: any;
   extraStyle?: any;
   extraTextStyle?: any;
+  onPress?: any;
 }
-const ButtonComp: FC<Props> = ({text, extraStyle, extraTextStyle}) => {
+const ButtonComp: FC<Props> = ({text, extraStyle, extraTextStyle, onPress}) => {
   return (
-    <TouchableOpacity style={[styles.btnStyle, extraStyle]}>
+    <Pressable style={[styles.btnStyle, extraStyle]} onPress={onPress}>
       <Text style={[styles.text, extraTextStyle]}>{text}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -24,6 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     backgroundColor: 'transparent',
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: AppColor.primary,
   },
   text: {},
 });

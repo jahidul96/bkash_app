@@ -3,3 +3,10 @@ export interface payoption {
   icon: any;
   name: string;
 }
+
+export interface itemInterface {
+  img: any;
+  id: number;
+  offer: string;
+  name: string;
+}

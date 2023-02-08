@@ -8,18 +8,18 @@ import {
   ImageBackground,
 } from 'react-native';
 import React, {FC} from 'react';
-import {AppColor} from '../utils/AppColor';
-import BalanceComp from './BalanceComp';
-import ContactProfile from './ContactProfile';
+import {AppColor} from '../../utils/AppColor';
+import BalanceComp from '../BalanceComp';
+import ContactProfile from '../ContactProfile';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
-import {contacts, logo, tapImg} from '../utils/fileExport';
+import {contacts, logo, tapImg} from '../../utils/fileExport';
 
 interface Props {
   setShowModal: any;
   showModal: any;
 }
-const ModalContent: FC<Props> = ({setShowModal, showModal}) => {
+const PayModalContent: FC<Props> = ({setShowModal, showModal}) => {
   return (
     <>
       {/* main contentWrapper */}
@@ -120,7 +120,7 @@ const ModalContent: FC<Props> = ({setShowModal, showModal}) => {
   );
 };
 
-export default ModalContent;
+export default PayModalContent;
 
 const styles = StyleSheet.create({
   modalContentWrapper: {

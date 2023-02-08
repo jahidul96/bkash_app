@@ -60,5 +60,6 @@ const styles = StyleSheet.create({
     backgroundColor: AppColor.LightGray,
     borderRadius: 30,
     height: 36,
+    borderWidth: 0,
   },
 });

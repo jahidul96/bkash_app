@@ -4,12 +4,24 @@ import React, {FC} from 'react';
 interface Props {
   placeholder: string;
   extraInputStyle?: any;
+  keyboardType?: any;
+  setValue: any;
+  value: any;
 }
 
-const InputComp: FC<Props> = ({placeholder, extraInputStyle}) => (
+const InputComp: FC<Props> = ({
+  placeholder,
+  extraInputStyle,
+  keyboardType,
+  value,
+  setValue,
+}) => (
   <TextInput
     placeholder={placeholder}
     style={[styles.inputStyle, extraInputStyle]}
+    keyboardType={keyboardType}
+    value={value}
+    onChangeText={text => setValue(text)}
   />
 );
 

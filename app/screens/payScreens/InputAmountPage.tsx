@@ -5,16 +5,14 @@ import {AppColor} from '../../utils/AppColor';
 import ContactProfile from '../../components/ContactProfile';
 import InputComp from '../../components/InputComp';
 import Ionincons from 'react-native-vector-icons/Ionicons';
-import Entypo from 'react-native-vector-icons/Entypo';
-import Feather from 'react-native-vector-icons/Feather';
 import {taka} from '../../utils/fileExport';
 import Modal from 'react-native-modal';
-import BalanceComp from '../../components/BalanceComp';
-import ModalContent from '../../components/ModalContent';
+import PayModalContent from '../../components/modelContentComp/PayModalContent';
 
 const InputAmountPage = () => {
   const [type, setType] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [amount, setAmount] = useState('');
   return (
     <View style={styles.container}>
       {/* header  */}
@@ -40,6 +38,9 @@ const InputAmountPage = () => {
               <InputComp
                 placeholder="0"
                 extraInputStyle={styles.extraInputStyle}
+                keyboardType="phone-pad"
+                value={amount}
+                setValue={setAmount}
               />
             ) : (
               <Pressable
@@ -55,7 +56,13 @@ const InputAmountPage = () => {
               onPress={() => {
                 setShowModal(!showModal);
               }}>
-              <Ionincons name="arrow-forward" size={28} />
+              <Ionincons
+                name="arrow-forward"
+                size={28}
+                color={
+                  amount.length > 1 ? AppColor.primary : AppColor.inActiveColor
+                }
+              />
             </Pressable>
           </View>
 
@@ -89,7 +96,7 @@ const InputAmountPage = () => {
           style={{
             flex: 1,
           }}>
-          <ModalContent setShowModal={setShowModal} showModal={showModal} />
+          <PayModalContent setShowModal={setShowModal} showModal={showModal} />
         </View>
       </Modal>
     </View>

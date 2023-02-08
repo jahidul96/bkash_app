@@ -10,8 +10,9 @@ import {useNavigation} from '@react-navigation/native';
 interface Props {
   text: string;
   back?: boolean;
+  nomenu?: boolean;
 }
-const Header: FC<Props> = ({text, back}) => {
+const Header: FC<Props> = ({text, back, nomenu}) => {
   const navigation = useNavigation<any>();
 
   return (
@@ -28,7 +29,11 @@ const Header: FC<Props> = ({text, back}) => {
       )}
 
       <Text style={styles.text}>{text}</Text>
-      <Image source={logo} style={styles.logoStyle} />
+      {nomenu ? (
+        <View></View>
+      ) : (
+        <Image source={logo} style={styles.logoStyle} />
+      )}
     </View>
   );
 };

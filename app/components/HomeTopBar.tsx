@@ -22,7 +22,7 @@ const HomeTopBar = () => {
       {/* profile section */}
       <View style={styles.profileContainer}>
         <TouchableOpacity
-          onPress={() => console.log('hell')}
+          onPress={() => navigation.navigate('MyQr')}
           style={styles.imgWrapper}>
           <Image source={frame} style={styles.frameStyle} />
           <Image source={person} style={styles.personimgStyle} />
