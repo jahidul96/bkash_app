@@ -7,5 +7,6 @@ import logo from '../assets/icons/logo.png';
 import book from '../assets/icons/openbook.png';
 import qrcode from '../assets/shebaicon/qr-code.png';
 import contacts from '../assets/icons/contacts.png';
+import tapImg from '../assets/tap.png';
 
-export {person, frame, f2, taka, award, logo, book, qrcode, contacts};
+export {person, frame, f2, taka, award, logo, book, qrcode, contacts, tapImg};

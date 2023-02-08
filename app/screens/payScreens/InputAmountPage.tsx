@@ -5,10 +5,16 @@ import {AppColor} from '../../utils/AppColor';
 import ContactProfile from '../../components/ContactProfile';
 import InputComp from '../../components/InputComp';
 import Ionincons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
 import {taka} from '../../utils/fileExport';
+import Modal from 'react-native-modal';
+import BalanceComp from '../../components/BalanceComp';
+import ModalContent from '../../components/ModalContent';
 
 const InputAmountPage = () => {
   const [type, setType] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   return (
     <View style={styles.container}>
       {/* header  */}
@@ -28,6 +34,7 @@ const InputAmountPage = () => {
         <View style={[styles.profileContainer, {marginTop: 6}]}>
           <Text>পরিমান </Text>
 
+          {/* input conents */}
           <View style={styles.inputContainer}>
             {type ? (
               <InputComp
@@ -44,16 +51,47 @@ const InputAmountPage = () => {
                 <Text style={styles.placeholderText}>0</Text>
               </Pressable>
             )}
-
             <Pressable
               onPress={() => {
-                // navigation.navigate('InputAmountPage')
+                setShowModal(!showModal);
               }}>
               <Ionincons name="arrow-forward" size={28} />
             </Pressable>
           </View>
+
+          {/* balance */}
+          <View style={[styles.balanceWrapper, {paddingBottom: 10}]}>
+            <Text style={styles.balancePlaceHolder}>
+              ব্যবহারযোগ্য ব্যালেন্স
+            </Text>
+            <View style={[styles.balanceWrapper, {marginLeft: 8}]}>
+              <Image
+                source={taka}
+                style={[
+                  styles.takaIconStyle,
+                  {width: 15, height: 15, marginRight: 3},
+                ]}
+              />
+              <Text>2,050</Text>
+            </View>
+          </View>
         </View>
       </View>
+
+      {/* modal  */}
+      <Modal
+        animationIn="fadeInDown"
+        animationInTiming={1000}
+        useNativeDriver={true}
+        isVisible={showModal}
+        onBackButtonPress={() => setShowModal(!showModal)}>
+        <View
+          style={{
+            flex: 1,
+          }}>
+          <ModalContent setShowModal={setShowModal} showModal={showModal} />
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -106,5 +144,15 @@ const styles = StyleSheet.create({
     fontSize: 40,
     height: 70,
     color: AppColor.primary,
+  },
+  balanceWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  balancePlaceHolder: {
+    color: AppColor.Black,
+    fontWeight: 'bold',
+    fontSize: 15,
   },
 });
