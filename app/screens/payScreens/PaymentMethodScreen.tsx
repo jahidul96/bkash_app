@@ -1,22 +1,22 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import Header from '../components/Header';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {WIDTH} from '../utils/AppDimension';
-import {AppColor} from '../utils/AppColor';
-import Notification from '../components/Notification';
-import LendenComp from '../components/LendenComp';
+import {WIDTH} from '../../utils/AppDimension';
+import Header from '../../components/Header';
+import {AppColor} from '../../utils/AppColor';
+import AgentComp from '../../components/paymentComp/AgentComp';
+import AtmComp from '../../components/paymentComp/AtmComp';
 
 const renderScene = SceneMap({
-  first: () => <Notification />,
-  second: () => <LendenComp />,
+  first: () => <AgentComp />,
+  second: () => <AtmComp />,
 });
 
-const Inbox = () => {
+const PaymentMethodScreen = () => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'first', title: 'নোটিফিকেশন'},
-    {key: 'second', title: 'লেনদেনসমূহ '},
+    {key: 'first', title: 'এজেন্ট'},
+    {key: 'second', title: 'এটিএম '},
   ]);
 
   const renderTabBar = (props: any) => (
@@ -39,14 +39,14 @@ const Inbox = () => {
   return (
     <View style={styles.container}>
       {/* header  */}
-      <Header text="ইনবক্স" />
+      <Header text="ক্যাশ আউট" back />
 
       {/* slider */}
       <View
         style={{
           flex: 1,
           width: WIDTH,
-          paddingHorizontal: 10,
+          paddingHorizontal: 15,
           marginTop: 15,
         }}>
         <TabView
@@ -61,7 +61,7 @@ const Inbox = () => {
   );
 };
 
-export default Inbox;
+export default PaymentMethodScreen;
 
 const styles = StyleSheet.create({
   container: {

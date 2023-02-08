@@ -5,7 +5,8 @@ import {
   StatusBar,
   ScrollView,
   Image,
-  TouchableOpacity,
+  Pressable,
+  TouchableNativeFeedback,
 } from 'react-native';
 import React, {useState} from 'react';
 import {AppColor} from '../utils/AppColor';
@@ -49,7 +50,7 @@ const HomeScreen = () => {
           {/* toggler  */}
           {showAllOPtion == true ? (
             <View style={styles.opentogglerContainerWrapper}>
-              <TouchableOpacity
+              <Pressable
                 style={styles.opentogglerContainer}
                 onPress={() => setShowAllOption(!showAllOPtion)}>
                 <Text style={styles.toglerText}>বন্ধ করুন</Text>
@@ -57,10 +58,10 @@ const HomeScreen = () => {
                   source={require('../assets/icons/up.png')}
                   style={styles.downIconStyle}
                 />
-              </TouchableOpacity>
+              </Pressable>
             </View>
           ) : (
-            <TouchableOpacity
+            <Pressable
               style={styles.togglerContainer}
               onPress={() => setShowAllOption(!showAllOPtion)}>
               <Text style={styles.toglerText}>আরো দেখুন</Text>
@@ -68,7 +69,7 @@ const HomeScreen = () => {
                 source={require('../assets/icons/down.png')}
                 style={styles.downIconStyle}
               />
-            </TouchableOpacity>
+            </Pressable>
           )}
         </View>
 

@@ -8,6 +8,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Rewards from './app/screens/Rewards';
 import BottomNav from './app/screens/navigation/BottomNav';
+import PaymentMethodScreen from './app/screens/payScreens/PaymentMethodScreen';
+import InputAmountPage from './app/screens/payScreens/InputAmountPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +27,14 @@ const App = () => {
         <Stack.Screen
           name="Rewards"
           component={gestureHandlerRootHOC(Rewards)}
+        />
+        <Stack.Screen
+          name="PaymentMethodScreen"
+          component={gestureHandlerRootHOC(PaymentMethodScreen)}
+        />
+        <Stack.Screen
+          name="InputAmountPage"
+          component={gestureHandlerRootHOC(InputAmountPage)}
         />
       </Stack.Navigator>
     </NavigationContainer>
