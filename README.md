@@ -15,4 +15,4 @@
 </div>
 
 
-# to run on your machine just do yarn end hit enter then run npx react-native run-android / yarn start then press a/i to run on your desired device!!
+# to run on your machine just do yarn hit enter then run npx react-native run-android / yarn start then press a/i to run on your desired device!!
